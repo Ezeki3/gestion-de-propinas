@@ -16,8 +16,23 @@ function guardarCliente(){
   const camposVacios = [mesa, hora].some( campo => campo === '');
 
   if(camposVacios){
-    console.log('al menos un campo esta vacio');
-  } else {
-    console.log('todos los campos estan llenos');
-  }
+    // verificar si ya hay una alerta
+    const existeAlerta = document.querySelector('.invalid-feedback');
+
+    if( !existeAlerta ){
+      const alerta = document.createElement('DIV');
+      alerta.classList.add('.invalid-feedback','d-block','text-center', 'text-danger');
+      alerta.textContent = "Todos los campos son obligatorios";
+      document.querySelector('.modal-body form').appendChild(alerta);
+
+      // Eliminar la alerta
+      setTimeout(()=>{
+        alerta.remove();
+      }, 2000);
+    }
+
+    return;
+  } 
+
+  console.log('todos los campos estan llenos');
 }
