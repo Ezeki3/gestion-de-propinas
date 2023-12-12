@@ -88,9 +88,21 @@ function mostrarPlatillos(platillos){
     categoria.classList.add('col-md-3',);
     categoria.textContent = categorias[ platillo.categoria ];
 
+    const inputCantidad = document.createElement('INPUT');
+    inputCantidad.type = 'number';
+    inputCantidad.min = 0;
+    inputCantidad.value = 0;
+    inputCantidad.id = `producto-${platillo.id}`;
+    inputCantidad.classList.add('form-control');
+
+    const agregar = document.createElement('DIV');
+    agregar.classList.add('col-md-2');
+    agregar.appendChild(inputCantidad);
+
     row.append(nombre);
     row.append(precio);
     row.append(categoria);
+    row.appendChild(agregar);
 
     contenido.appendChild(row);
   })
